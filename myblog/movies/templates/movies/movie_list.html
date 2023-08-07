@@ -56,13 +56,35 @@
             height: auto;
             border-radius: 5px;
         }
+        /* 검색 버튼 스타일 */
+        .search-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+        /* 검색 입력 필드 스타일 */
+        input[type="text"] {
+        padding: 12px;
+        font-size: 18px;
+    }
     </style>
 </head>
 <body>
     <header>
         <h1>Popular Movies</h1>
         <button class="btn btn-primary ml-2" onclick="location.href='{% url 'post_list' %}'">메인페이지</button>
-
+        <form method="GET">
+            <input type="text" name="search" placeholder="영화 제목 검색">
+            <button type="submit" class="search-button">검색</button>
+        </form>
     </header>
     <main>
         <ul>

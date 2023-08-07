@@ -1,5 +1,6 @@
 # movies/views.py
 
+from django.db.models import Q # 검색기능
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Movie
 from .utils import get_movies_from_api
@@ -20,6 +21,15 @@ def movie_list(request):
             release_date=movie_data["release_date"],
             poster_url="https://image.tmdb.org/t/p/w500" + movie_data["poster_path"]
         )
+        # Q 객체를 사용하여 제목에 대한 부분 문자열 검색을 수행
+        search_query = request.GET.get('search', '')
+        if search_query:
+            movies = Movie.objects.filter(Q(title__icontains=search_query))
+        else:
+            movies = Movie.objects.all()
+
+    context = {'movies': movies}
+    return render(request, 'movies/movie_list.html', context)
 
     # 모든 영화 레코드를 가져와서 템플릿에 전달
     movies = Movie.objects.all()
