@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        li {
+            background-color: #fff;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 0 0 calc(20% - 20px);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            margin: 10px 0;
+            padding: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Popular Movies</h1>
+    </header>
+    <main>
+        <ul>
+            {% for movie in movies %}
+            <li>
+                <h2>{{ movie.title }}</h2>
+                <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+                <p>{{ movie.overview }}</p>
+                <p>Release Date: {{ movie.release_date }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>

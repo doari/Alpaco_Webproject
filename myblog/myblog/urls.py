@@ -26,6 +26,7 @@ urlpatterns = [
      path('bcuser/', include('bcuser.urls')),
      path('post/new/', views.post_new, name='post_new'),
      path('profile', views.profile, name='profile'),
+     path('movies/', include('movies.urls')),
      path('detail/edit/<int:pk>/', views.post_edit, name='post_edit'),
      path('', include('post.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
