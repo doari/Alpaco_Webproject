@@ -1,3 +1,4 @@
+<!-- C:\Users\PARK EUNJIN\Documents\Alpaco_Webproject\myblog\movies\templates\movies\movie_list.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,15 +61,16 @@
 <body>
     <header>
         <h1>Popular Movies</h1>
+        <button class="btn btn-primary ml-2" onclick="location.href='{% url 'post_list' %}'">메인페이지</button>
+
     </header>
     <main>
         <ul>
             {% for movie in movies %}
-            <li>
-                <h2>{{ movie.title }}</h2>
+            <li><a href="{% url 'movie_detail' movie_id=movie.id %}">
                 <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
-                <p>{{ movie.overview }}</p>
-                <p>Release Date: {{ movie.release_date }}</p>
+                <h2>{{ movie.title }}</a></h2>
+                <p>개봉일: {{ movie.release_date }}</p>
             </li>
             {% endfor %}
         </ul>

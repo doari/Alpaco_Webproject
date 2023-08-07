@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ movie.title }}</title>
+</head>
+<body>
+    <header>
+        <h1>{{ movie.title }}</h1>
+        <button class="btn btn-primary ml-2" onclick="location.href='{% url 'post_list' %}'">메인페이지</button>
+    </header>
+    <main>
+        <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+        <p>{{ movie.overview }}</p>
+        <p>개봉일: {{ movie.release_date }}</p>
+    </main>
+</body>
+</html>
