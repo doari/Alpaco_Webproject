@@ -1,6 +1,9 @@
 # movies/models.py
 
 from django.db import models
+# Comment 모델을 가져옴
+from post.forms import Comment
+
 
 class Movie(models.Model):
     title = models.CharField(max_length=200)
@@ -10,3 +13,4 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
+
