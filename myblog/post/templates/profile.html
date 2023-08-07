@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            background-color: #01bc68;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .container {
+            display: flex;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .image {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .text {
+            flex: 1;
+            padding: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0070c9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>나의 미국 여행 블로그</h1>
+    </div>
+    <div class="navbar">
+        <button class="btn btn-primary" style="background-color: transparent; color: #0070c9;" onclick="location.href='/bcuser/register/'">회원가입</button>
+        <button class="btn btn-primary ml-2" onclick="location.href='/bcuser/login/'">로그인</button>
+        <button class="btn btn-primary ml-2" onclick="location.href='/bcuser/logout/'">로그아웃</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='/post/'">돌아가기</button>
+
+    </div>
+    <div class="container">
+        <div class="image">
+            <img src="{% static 'img/profile.jpg' %}" alt="Profile Image">
+        </div>
+        <div class="text">
+            <h1>Profile</h1>
+            <h3>Hello, I'm Byungjun.<br><br>
+                I live in Korea.<br>
+                I'm a student studying coding.<br>
+                My hobbies are playing the guitar and singing.<br><br>
+                The dog's name in this picture is Jay.<br>
+                Jay gets hot easily because he has long hair.<br>
+                It's so hot these days that Jay is having a hard time, so I'm heartbroken.<br>
+                I'll buy you an air conditioner next year.</h3>
+        </div>
+    </div>
+</body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+</html>
+<div class="row mt-5">
+    <div class="col-12 text-right">
+        <p>&copy; 2023 MyBlog. All rights reserved.Designed by Jun</p>
+    </div>
+</div>

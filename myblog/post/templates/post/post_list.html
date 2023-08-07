@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contents %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header Styles */
+    .header {
+        background-color: #3295ff;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        border-radius: 4px;
+    }
+    .d-flex.justify-content-end {
+        justify-content: flex-end;
+    }
+    /* Navbar Styles */
+    .navbar {
+        background-color: #f0f0f0;
+        padding: 10px;
+        text-align: right;
+        
+    }
+
+    /* Button Styles */
+    .btn {
+        background-color: transparent;
+        color: #007BFF;
+        border: 2px solid #007BFF;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #007BFF;
+        color: #fff;
+    }
+
+    /* Post Card Styles */
+    .post-card {
+        max-width: 350px;
+        margin: 0 auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: box-shadow 0.3s;
+        
+    }
+
+    .post-card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-card .card-body {
+        padding: 20px;
+    }
+
+    .post-card .card-title {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #007BFF;
+        margin-bottom: 10px;
+    }
+
+    .post-card .card-text {
+        color: #333;
+    }
+
+    .post-card img {
+        width: 350px;
+        height: 350px;
+    }
+
+    /* Footer Styles */
+    .footer {
+        background-color: #e4e4e4;
+        padding: 20px;
+        text-align: center;
+    }
+    .brand img {
+        padding: 8px;
+        width: 35px;
+        height: auto; /* 높이를 자동으로 조정하여 비율을 유지합니다. */
+    }
+</style>
+<div class="header">
+    <h1>나의 사진 블로그</h1>
+</div>
+<div class="navbar d-flex justify-content-end flex-wrap">
+    
+    <button class="btn" onclick="location.href='/bcuser/register/'">회원가입</button>
+    <button class="btn" onclick="location.href='/bcuser/login/'">로그인</button>
+    <button class="btn" onclick="location.href='/bcuser/logout/'">로그아웃</button>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <a href="{% url 'post_new' %}" class="btn btn-primary">글쓰기</a>
+            <button class="btn btn-primary ml-2" onclick="location.href='{% url 'profile' %}';">프로필</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-4 mb-4">
+            <div class="post-card">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Post Image">
+                {% endif %}
+                <div class="card-body">
+                    <h2 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                    <p class="card-text">{{ post.text|truncatewords:30 }}</p>
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
+        </div><div class="row">
+        {% endif %}
+        {% empty %}
+        <div class="col-12">
+            <p>No posts yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="footer">
+    <div class="brand">
+        <a href="https://www.youtube.com/" target="_blank">
+            <img src="{% static 'img/Youtube.png' %}" alt="유튜브 버튼">
+        </a>
+        <a href="https://www.linkedin.com/" target="_blank">
+            <img src="{% static 'img/Linkedin.png' %}" alt="링크드인">
+        </a>
+        <a href="https://ko-kr.facebook.com/" target="_blank">
+            <img src="{% static 'img/Facebook.png' %}" alt="페이스북">
+        </a>
+        <a href="https://www.reddit.com/r/programming/" target="_blank">
+            <img src="{% static 'img/Reddit.png' %}" alt="레딧">
+        </a>
+    </div>
+    <p>&copy; 2023 MyBlog. All rights reserved. Designed by Jun</p>
+</div>
+{% endblock %}
+
+

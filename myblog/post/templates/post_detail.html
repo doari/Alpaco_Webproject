@@ -1,0 +1,78 @@
+<!-- templates/post_detail.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block contents %}
+<style>
+    div.comment-name {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #007BFF;
+    }
+
+    .comment p {
+        font-size: 1em;
+        color: #e7872e;
+    }
+
+    .post-body {
+        font-size: 1.2em;
+        font-weight: 800;
+        line-height: 1.7;
+        color: rgb(63, 211, 85);
+    }
+</style>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.author}}</p>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="Post Image" style="max-height: 700px;">
+            
+            <p class="post-body">{{ post.text }}</p>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    <div class="row mt-5">
+        <div class="col-12">
+            <h4>&#35; 댓글</h4>
+            <p></p>
+            {% for comment in comments%}
+            <div class="comment">
+                <div class="comment-name">{{comment.name}}</div>
+                <p>{{comment.body}}</p>
+            </div>
+            {% empty %}
+            <p>No command yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+    <hr>
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3>댓글쓰기</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {{comment_form.as_p}}
+                <button type="submit" class="btn btn-primary">등록</button>
+            </form>
+        </div>
+        <div class="col-12 mt-2">
+            <button type="button" class="btn btn-primary" onclick="location.href='/detail/edit/{{ post.pk }}/'">수정하기</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='/post/'">돌아가기</button>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row mt-5" style="background-color: rgb(175, 179, 191);">
+    <div class="col-12 text-center">
+        <p>&copy; 2023 MyBlog. All rights reserved.Designed by Jun</p>
+    </div>
+</div>
+{% endblock %}
+

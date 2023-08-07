@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title class="text-center">My Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-flex justify-content-center" href="{% url 'post_list' %}">
+            <img src="{% static 'img/Logo_blog.png' %}" alt="My Blog" height="100" style="max-height: 110px; float: center;">
+        </a>
+        <!-- Add more navigation items here -->
+    </nav>
+    <div class="container">
+        {% block contents %}{% endblock %}
+    </div>
+</body>
+</html>
