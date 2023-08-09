@@ -12,4 +12,17 @@ def get_movies_from_api(api_key):
     else:
         return []
     
-    
+def get_movies_from_api(api_key, endpoint, params=None):
+    base_url = f"https://api.themoviedb.org/3/{endpoint}"
+    default_params = {"api_key": api_key}
+
+    if params:
+        default_params.update(params)
+
+    response = requests.get(base_url, params=default_params)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data.get("results", [])
+    else:
+        return []

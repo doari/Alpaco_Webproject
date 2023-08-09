@@ -1,8 +1,8 @@
-<!-- C:\Users\PARK EUNJIN\Documents\Alpaco_Webproject\moviesite\movies\templates\movies\movie_list.html -->
+<!-- C:\Users\PARK EUNJIN\Documents\Alpaco_Webproject\moviesite\movies\templates\movies\popular_movie.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Movie Website</title>
+    <title>상영중 영화 리스트</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -79,40 +79,34 @@
 </head>
 <body>
     <header>
-        <h1>영화 메인사이트</h1>
+        <h1>상영중인 영화</h1>
         <div class="navbar d-flex justify-content-end flex-wrap">
     
             <button class="btn" onclick="location.href='/bcuser/register/'">회원가입</button>
             <button class="btn" onclick="location.href='/bcuser/login/'">로그인</button>
             <button class="btn" onclick="location.href='/bcuser/logout/'">로그아웃</button>
+            <button class="btn" onclick="location.href='/movies/'">메인페이지</button>
             
         </div>
         <button class="btn btn-primary ml-2" onclick="location.href='{% url 'post_list' %}'">이용자게시판</button>
-        <button class="btn" onclick="location.href='/movies/popular/'">인기영화</button>
-        <button class="btn" onclick="location.href='/movies/now_play/'">상영중인 영화</button>
-        <button class="btn" onclick="location.href='/movies/upcoming/'">개봉예정 영화</button>
-        <button class="btn" onclick="location.href='/movies/toprate/'">최고평점 영화</button>
-            
         <form method="GET">
             <input type="text" name="search" placeholder="영화 제목 검색">
             <button type="submit" class="search-button">검색</button>
         </form>
     </header>
-    <main>
-        {% for api_info in movies_list %}
-            <h2>{{ api_info.api_name }}</h2>
-            <ul>
-                {% for movie in api_info.movies|slice:":5" %}
-                    <li>
-                        <a href="{% url 'movie_detail' movie_id=movie.id %}">
-                            <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
-                            <h2>{{ movie.title }}</h2>
-                        </a>
-                        <p>개봉일: {{ movie.release_date }}</p>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endfor %}
-    </main>
-</body>
+    <body>
+        <h1>Now Playing Movies</h1>
+        <ul>
+            {% for movie in now_playing_movies %}
+                <li>
+                    
+                    <a href="{% url 'movie_detail' movie_id=movie.id %}">
+                        <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+                        <h2>{{ movie.title }}</h2>
+                    </a>
+                    <p>개봉일: {{ movie.release_date }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
 </html>
