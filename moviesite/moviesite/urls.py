@@ -1,5 +1,5 @@
 """
-URL configuration for moviesite project.
+URL configuration for myblog project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -28,7 +28,7 @@ urlpatterns = [
      path('profile', views.profile, name='profile'),
      path('movies/', include('movies.urls')),
      path('detail/edit/<int:pk>/', views.post_edit, name='post_edit'),
-     path('', include('post.urls')),
+     path('', include('movies.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # static() : DEBUG= True 일때 settings.MEDIA_URL에 정의된 패턴과 일치하는 URL을

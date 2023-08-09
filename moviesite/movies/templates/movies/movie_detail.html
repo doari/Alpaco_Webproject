@@ -47,8 +47,8 @@
 <body>
     <header>
         <h1>{{ movie.title }}</h1>
-        <button class="btn btn-primary ml-2" onclick="location.href='{% url 'post_list' %}'">메인페이지</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='/movies/'">돌아가기</button>
+        <button class="btn btn-primary ml-2" onclick="location.href='{% url 'post_list' %}'">자유게시판</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='/movies/'">메인페이지</button>
     </header>
     <main>
         <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">

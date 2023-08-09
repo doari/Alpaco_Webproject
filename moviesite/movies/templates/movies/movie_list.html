@@ -80,7 +80,14 @@
 <body>
     <header>
         <h1>Popular Movies</h1>
-        <button class="btn btn-primary ml-2" onclick="location.href='{% url 'post_list' %}'">메인페이지</button>
+        <div class="navbar d-flex justify-content-end flex-wrap">
+    
+            <button class="btn" onclick="location.href='/bcuser/register/'">회원가입</button>
+            <button class="btn" onclick="location.href='/bcuser/login/'">로그인</button>
+            <button class="btn" onclick="location.href='/bcuser/logout/'">로그아웃</button>
+            
+        </div>
+        <button class="btn btn-primary ml-2" onclick="location.href='{% url 'post_list' %}'">이용자게시판</button>
         <form method="GET">
             <input type="text" name="search" placeholder="영화 제목 검색">
             <button type="submit" class="search-button">검색</button>
