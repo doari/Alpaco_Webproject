@@ -6,6 +6,7 @@ from post.forms import Comment
 
 
 class Movie(models.Model):
+    api_id = models.IntegerField(default=-1)
     title = models.CharField(max_length=200)
     overview = models.TextField()
     release_date = models.DateField()

@@ -94,10 +94,12 @@
         <button class="btn" onclick="location.href='/movies/toprate/'">최고평점 영화</button>
             
         <form method="GET">
+            
             <input type="text" name="search" placeholder="영화 제목 검색">
             <button type="submit" class="search-button">검색</button>
         </form>
     </header>
+    
     <main>
         {% for api_info in movies_list %}
             <h2>{{ api_info.api_name }}</h2>

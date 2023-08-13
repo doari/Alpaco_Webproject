@@ -51,10 +51,21 @@
         <button type="button" class="btn btn-primary" onclick="location.href='/movies/'">메인페이지</button>
     </header>
     <main>
+            <h2>{{ api_info.api_name }}</h2>
+            <ul>
+                    <li>
+                            <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+                            <h2>{{ movie.title }}</h2>
+                        </a>
+                        <p>개봉일: {{ movie.release_date }}</p>
+                    </li>
+            </ul>
+    </main> 
+    <!-- <main>
         <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
         <p>{{ movie.overview }}</p><hr>
         <p>개봉일: {{ movie.release_date }}</p><hr>
-        <!-- Comment Form -->
+         Comment Form
         <div class="col-12">
             <h3>댓글쓰기</h3><br>
             <form method="POST">
@@ -62,8 +73,8 @@
                 {{comment_form.as_p}}
                 <button type="submit" class="btn btn-primary">등록</button>
             </form>
-        </div>
-    </main>
+        </div> 
+    </main> -->
 </body>
 </html>
 
