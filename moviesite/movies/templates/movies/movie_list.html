@@ -104,7 +104,7 @@
         {% for api_info in movies_list %}
             <h2>{{ api_info.api_name }}</h2>
             <ul>
-                {% for movie in api_info.movies|slice:":5" %}
+                {% for movie in api_info.movies %}
                     <li>
                         <a href="{% url 'movie_detail' movie_id=movie.id %}">
                             <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">

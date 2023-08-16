@@ -38,13 +38,15 @@ def movie_list(request):
                 poster_url=movie_data["poster_url"]
             )
 
-        movies_list.append({"api_name": api_info["name"], "movies": movies_data[:5]})
+        movies_list.append({"api_name": api_info["name"], "movies": movies_data[:15]})
 
 
     # Q 객체를 사용하여 제목에 대한 부분 문자열 검색을 수행
     search_query = request.GET.get('search', '')
     if search_query:
         movies = Movie.objects.filter(Q(title__icontains=search_query))
+        if movies.exists():  # 검색 결과가 있는 경우에만 movies_list에 추가
+            movies_list = [{"api_name": "검색 결과", "movies": movies}]
     else:
         movies = Movie.objects.all()
 
