@@ -1,120 +1,324 @@
 <!-- C:\Users\PARK EUNJIN\Documents\Alpaco_Webproject\moviesite\movies\templates\movies\movie_list.html -->
+{% load static %}
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Movie Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CINEMA PARADISO</title>
 
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
-
-        h1 {
-            margin: 20px 0;
-            padding: 0;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        li {
-            background-color: #fff;
-            margin: 10px;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            flex: 0 0 calc(20% - 20px);
-            box-sizing: border-box;
-        }
-
-        h2 {
-            margin: 0;
-            padding: 0;
-        }
-
-        p {
-            margin: 10px 0;
-            padding: 0;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        /* 검색 버튼 스타일 */
-        .search-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .search-button:hover {
-            background-color: #0056b3;
-        }
-        /* 검색 입력 필드 스타일 */
-        input[type="text"] {
-        padding: 12px;
-        font-size: 18px;
-    }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/movie_list.css' %}" />
+    <script type="text/javascript" src="{% static 'js/carousel.js' %}"></script>
+  </head>
+  <body>
     <header>
-        <h1>영화 메인사이트</h1>
-        <div class="navbar d-flex justify-content-end flex-wrap">
-    
-            <button class="btn" onclick="location.href='/bcuser/register/'">회원가입</button>
-            <button class="btn" onclick="location.href='/bcuser/login/'">로그인</button>
-            <button class="btn" onclick="location.href='/bcuser/logout/'">로그아웃</button>
-            
-        </div>
-        <button class="btn btn-primary ml-2" onclick="location.href='{% url 'post_list' %}'">이용자게시판</button>
-        <button class="btn" onclick="location.href='/movies/popular/'">인기영화</button>
-        <button class="btn" onclick="location.href='/movies/now_play/'">상영중인 영화</button>
-        <button class="btn" onclick="location.href='/movies/upcoming/'">개봉예정 영화</button>
-        <button class="btn" onclick="location.href='/movies/toprate/'">최고평점 영화</button>
-            
+      <div class="header">
+        <h1>CINEMA PARADISO</h1>
+        <hr />
+        <button class="forum" onclick="location.href='{% url 'post_list' %}'">
+          Forum
+        </button>
+        <button class="login" onclick="location.href='/bcuser/login/'">
+          Log In
+        </button>
+        <hr />
         <form method="GET">
-            
-            <input type="text" name="search" placeholder="영화 제목 검색">
-            <button type="submit" class="search-button">검색</button>
+          <input
+            type="text"
+            name="search"
+            placeholder="영화 제목을 검색하세요"
+          />
+          <button type="submit" class="search-button">검색</button>
         </form>
+      </div>
     </header>
-    
+
     <main>
-        {% for api_info in movies_list %}
-            <h2>{{ api_info.api_name }}</h2>
+      <div class="container">
+        <header>
+          <span>Popular</span>
+          <button
+            class="more-button"
+            onclick="location.href='/movies/popular/'"
+          >
+            더보기...
+          </button>
+        </header>
+
+        <div class="carousel" data="0">
+          <div class="movies">
             <ul>
-                {% for movie in api_info.movies %}
-                    <li>
-                        <a href="{% url 'movie_detail' movie_id=movie.id %}">
-                            <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
-                            <h2>{{ movie.title }}</h2>
-                        </a>
-                        <p>개봉일: {{ movie.release_date }}</p>
-                    </li>
-                {% endfor %}
+              {% for movie in movies_list.0.movies|slice:":15" %}
+              <li class="movie">
+                <span class="frame">
+                  <span class="inner_white"></span>
+                  <span class="inner_black"></span>
+                  <span class="outer_white"></span>
+                  <span class="outer_black"></span>
+                </span>
+                <span class="bulbs">
+                  <span class="bulb bulb1"></span>
+                  <span class="bulb bulb2"></span>
+                  <span class="bulb bulb3"></span>
+                  <span class="bulb bulb4"></span>
+                  <span class="bulb bulb5"></span>
+                  <span class="bulb bulb6"></span>
+                  <span class="bulb bulb7"></span>
+                  <span class="bulb bulb8"></span>
+                  <span class="bulb bulb9"></span>
+                  <span class="bulb bulb10"></span>
+                  <span class="bulb bulb11"></span>
+                  <span class="bulb bulb12"></span>
+                  <span class="bulb bulb13"></span>
+                  <span class="bulb bulb14"></span>
+                  <span class="bulb bulb15"></span>
+                  <span class="bulb bulb16"></span>
+                  <span class="bulb bulb17"></span>
+                  <span class="bulb bulb18"></span>
+                  <span class="bulb bulb19"></span>
+                  <span class="bulb bulb20"></span>
+                  <span class="bulb bulb21"></span>
+                  <span class="bulb bulb22"></span>
+                  <span class="bulb bulb23"></span>
+                  <span class="bulb bulb24"></span>
+                  <span class="bulb bulb25"></span>
+                  <span class="bulb bulb26"></span>
+                  <span class="bulb bulb27"></span>
+                  <span class="bulb bulb28"></span>
+                  <span class="bulb bulb29"></span>
+                  <span class="bulb bulb30"></span>
+                  <span class="bulb bulb31"></span>
+                  <span class="bulb bulb32"></span>
+                  <span class="bulb bulb33"></span>
+                  <span class="bulb bulb34"></span>
+                  <span class="bulb bulb35"></span>
+                  <span class="bulb bulb36"></span>
+                  <span class="bulb bulb37"></span>
+                  <span class="bulb bulb38"></span>
+                  <span class="bulb bulb39"></span>
+                  <span class="bulb bulb40"></span>
+                  <span class="bulb bulb41"></span>
+                  <span class="bulb bulb42"></span>
+                  <span class="bulb bulb43"></span>
+                  <span class="bulb bulb44"></span>
+                  <span class="bulb bulb45"></span>
+                  <span class="bulb bulb46"></span>
+                </span>
+                <a href="{% url 'movie_detail' movie_id=movie.id %}">
+                  <img
+                    class="poster"
+                    src="{{ movie.poster_url }}"
+                    alt="{{ movie.title }}"
+                  />
+                </a>
+              </li>
+              {% endfor %}
             </ul>
-        {% endfor %}
+          </div>
+          <div class="slide slide-left">
+            <button>
+              <div class="slide-left-button"></div>
+            </button>
+          </div>
+          <div class="slide slide-right">
+            <button>
+              <div class="slide-right-button"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="container">
+        <header>
+          <span>Now Playing</span>
+          <button
+            class="more-button"
+            onclick="location.href='/movies/now_play/'"
+          >
+            더보기...
+          </button>
+        </header>
+
+        <div class="carousel" data="0">
+          <div class="movies">
+            <ul>
+              {% for movie in movies_list.1.movies|slice:":15" %}
+              <li class="movie">
+                <span class="frame">
+                  <span class="inner_white"></span>
+                  <span class="inner_black"></span>
+                  <span class="outer_white"></span>
+                  <span class="outer_black"></span>
+                </span>
+                <span class="bulbs">
+                  <span class="bulb bulb1"></span>
+                  <span class="bulb bulb2"></span>
+                  <span class="bulb bulb3"></span>
+                  <span class="bulb bulb4"></span>
+                  <span class="bulb bulb5"></span>
+                  <span class="bulb bulb6"></span>
+                  <span class="bulb bulb7"></span>
+                  <span class="bulb bulb8"></span>
+                  <span class="bulb bulb9"></span>
+                  <span class="bulb bulb10"></span>
+                  <span class="bulb bulb11"></span>
+                  <span class="bulb bulb12"></span>
+                  <span class="bulb bulb13"></span>
+                  <span class="bulb bulb14"></span>
+                  <span class="bulb bulb15"></span>
+                  <span class="bulb bulb16"></span>
+                  <span class="bulb bulb17"></span>
+                  <span class="bulb bulb18"></span>
+                  <span class="bulb bulb19"></span>
+                  <span class="bulb bulb20"></span>
+                  <span class="bulb bulb21"></span>
+                  <span class="bulb bulb22"></span>
+                  <span class="bulb bulb23"></span>
+                  <span class="bulb bulb24"></span>
+                  <span class="bulb bulb25"></span>
+                  <span class="bulb bulb26"></span>
+                  <span class="bulb bulb27"></span>
+                  <span class="bulb bulb28"></span>
+                  <span class="bulb bulb29"></span>
+                  <span class="bulb bulb30"></span>
+                  <span class="bulb bulb31"></span>
+                  <span class="bulb bulb32"></span>
+                  <span class="bulb bulb33"></span>
+                  <span class="bulb bulb34"></span>
+                  <span class="bulb bulb35"></span>
+                  <span class="bulb bulb36"></span>
+                  <span class="bulb bulb37"></span>
+                  <span class="bulb bulb38"></span>
+                  <span class="bulb bulb39"></span>
+                  <span class="bulb bulb40"></span>
+                  <span class="bulb bulb41"></span>
+                  <span class="bulb bulb42"></span>
+                  <span class="bulb bulb43"></span>
+                  <span class="bulb bulb44"></span>
+                  <span class="bulb bulb45"></span>
+                  <span class="bulb bulb46"></span>
+                </span>
+                <a href="{% url 'movie_detail' movie_id=movie.id %}">
+                  <img
+                    class="poster"
+                    src="{{ movie.poster_url }}"
+                    alt="{{ movie.title }}"
+                  />
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="slide slide-left">
+            <button>
+              <div class="slide-left-button"></div>
+            </button>
+          </div>
+          <div class="slide slide-right">
+            <button>
+              <div class="slide-right-button"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="container">
+        <header>
+          <span>Top Rated</span>
+          <button
+            class="more-button"
+            onclick="location.href='/movies/toprate/'"
+          >
+            더보기...
+          </button>
+        </header>
+
+        <div class="carousel" data="0">
+          <div class="movies">
+            <ul>
+              {% for movie in movies_list.2.movies|slice:":15" %}
+              <li class="movie">
+                <span class="frame">
+                  <span class="inner_white"></span>
+                  <span class="inner_black"></span>
+                  <span class="outer_white"></span>
+                  <span class="outer_black"></span>
+                </span>
+                <span class="bulbs">
+                  <span class="bulb bulb1"></span>
+                  <span class="bulb bulb2"></span>
+                  <span class="bulb bulb3"></span>
+                  <span class="bulb bulb4"></span>
+                  <span class="bulb bulb5"></span>
+                  <span class="bulb bulb6"></span>
+                  <span class="bulb bulb7"></span>
+                  <span class="bulb bulb8"></span>
+                  <span class="bulb bulb9"></span>
+                  <span class="bulb bulb10"></span>
+                  <span class="bulb bulb11"></span>
+                  <span class="bulb bulb12"></span>
+                  <span class="bulb bulb13"></span>
+                  <span class="bulb bulb14"></span>
+                  <span class="bulb bulb15"></span>
+                  <span class="bulb bulb16"></span>
+                  <span class="bulb bulb17"></span>
+                  <span class="bulb bulb18"></span>
+                  <span class="bulb bulb19"></span>
+                  <span class="bulb bulb20"></span>
+                  <span class="bulb bulb21"></span>
+                  <span class="bulb bulb22"></span>
+                  <span class="bulb bulb23"></span>
+                  <span class="bulb bulb24"></span>
+                  <span class="bulb bulb25"></span>
+                  <span class="bulb bulb26"></span>
+                  <span class="bulb bulb27"></span>
+                  <span class="bulb bulb28"></span>
+                  <span class="bulb bulb29"></span>
+                  <span class="bulb bulb30"></span>
+                  <span class="bulb bulb31"></span>
+                  <span class="bulb bulb32"></span>
+                  <span class="bulb bulb33"></span>
+                  <span class="bulb bulb34"></span>
+                  <span class="bulb bulb35"></span>
+                  <span class="bulb bulb36"></span>
+                  <span class="bulb bulb37"></span>
+                  <span class="bulb bulb38"></span>
+                  <span class="bulb bulb39"></span>
+                  <span class="bulb bulb40"></span>
+                  <span class="bulb bulb41"></span>
+                  <span class="bulb bulb42"></span>
+                  <span class="bulb bulb43"></span>
+                  <span class="bulb bulb44"></span>
+                  <span class="bulb bulb45"></span>
+                  <span class="bulb bulb46"></span>
+                </span>
+                <a href="{% url 'movie_detail' movie_id=movie.id %}">
+                  <img
+                    class="poster"
+                    src="{{ movie.poster_url }}"
+                    alt="{{ movie.title }}"
+                  />
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="slide slide-left">
+            <button>
+              <div class="slide-left-button"></div>
+            </button>
+          </div>
+          <div class="slide slide-right">
+            <button>
+              <div class="slide-right-button"></div>
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>

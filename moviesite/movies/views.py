@@ -45,8 +45,7 @@ def movie_list(request):
     search_query = request.GET.get('search', '')
     if search_query:
         movies = Movie.objects.filter(Q(title__icontains=search_query))
-        if movies.exists():  # 검색 결과가 있는 경우에만 movies_list에 추가
-            movies_list = [{"api_name": "검색 결과", "movies": movies}]
+        movies_list = [{"api_name": "검색 결과", "movies": movies}]
     else:
         movies = Movie.objects.all()
 
