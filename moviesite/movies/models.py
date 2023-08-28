@@ -1,9 +1,5 @@
-# movies/models.py
-
 from django.db import models
-# Comment 모델을 가져옴
-from post.forms import Comment
-
+from django.contrib.auth.models import User
 
 class Movie(models.Model):
     api_id = models.IntegerField(default=-1)
@@ -14,4 +10,12 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Comment(models.Model):
+    movie = models.ForeignKey('Movie', on_delete=models.CASCADE, related_name='comments')  # related_name 추가
+    author = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    content = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.content

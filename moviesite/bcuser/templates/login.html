@@ -1,40 +1,87 @@
-{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  </head>
+  <body>
+    <section class="container">
+      <div class="flex-box">
+        <button class="title-button" onclick="location.href='/movies/'">
+          <h1>CINEMA PARADISO</h1>
+        </button>
+      </div>
 
-{% block contents %}
-    <div class="row mt-5">
-        <div class="col-12 text-center">
-            <h1>로그인</h1>
-        </div>
-    </div>
-    <div class="row mt-5">
+      <div class="flex-box">
         <div class="col-12">
-            <!-- views.py에 register 메소드로 부터 res_data를 통해 error메세지가 매핑됨 -->
-            {{ error }}
+          <!-- views.py에 register 메소드로 부터 res_data를 통해 error메세지가 매핑됨 -->
+          {{ error }}
         </div>
-    </div>
-    <div class="row mt-5">
+      </div>
+
+      <div class="row mt-5">
         <div class="col-12">
-            <!-- post방식의 현재페이지 -->
-            <!-- {% csrf_token %} : 암호화된 키 인증 : 암호가 맞지 않으면 호청이 되지 않음 -->
-            <form method="POST" action="."> 
-                {% csrf_token %}
-                {% for field in form %}
-                <div class="form-group">
-                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                  <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}"
-                    placeholder="{{ field.label }}" name="{{ field.name }}" />
-                </div>
-                {% if field.errors %}
-                <span style="color: red">{{ field.errors }}</span>
-                {% endif %}
-                {% endfor %}
-                <button type="submit" class="btn btn-primary">로그인</button>
-              </form>
+          <!-- post방식의 현재페이지 -->
+          <!-- {% csrf_token %} : 암호화된 키 인증 : 암호가 맞지 않으면 호청이 되지 않음 -->
+          <form method="POST" action=".">
+            {% csrf_token %} {% for field in form %}
+            <div class="form-group">
+              <!-- <label for="{{ field.id_for_label }}">{{ field.label }}</label> -->
+              <div class="flex-box">
+                <input
+                  type="{{ field.field.widget.input_type }}"
+                  class="form-control"
+                  id="{{ field.id_for_label }}"
+                  placeholder="{{ field.label }}"
+                  name="{{ field.name }}"
+                />
+              </div>
+            </div>
+            {% if field.errors %}
+            <div class="flex-box">
+              <span style="color: red">{{ field.errors }}</span>
+            </div>
+
+            {% endif %} {% endfor %}
+            <div class="flex-box">
+              <button type="submit" class="login-button" onclick="showLogoutButton()">
+                  Log In
+              </button>
+          </div>
           
+          <script>
+            function showLogoutButton() {
+                // Find the logout button on the movie_list page
+                const logoutButton = parent.document.querySelector('.logout-button');
+        
+                // Show the logout button
+                if (logoutButton) {
+                    logoutButton.style.display = 'block';
+                }
+            }
+        </script>
+          </form>
         </div>
-    </div>
-</div>
-    <button type="button" class="btn btn-primary" onclick="location.href='/post/'">돌아가기</button>
+      </div>
+      <hr />
+      <div class="register">
+        <div class="flex-box">
+          <p>계정이 없으신가요?</p>
+        </div>
 
-{% endblock %}
-
+        <div class="flex-box">
+          <button
+            class="register-button"
+            onclick="location.href='/bcuser/register'"
+          >
+            Register
+          </button>
+        </div>
+      </div>
+    </section>
+    
+  </body>
+</html>

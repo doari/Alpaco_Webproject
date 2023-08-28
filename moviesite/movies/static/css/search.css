@@ -1,0 +1,556 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "MexcellentRegular";
+  src: url("../font/mexcellent.regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "ParisienneRegular";
+  src: url("../font/Parisienne-Regular.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "ParisienneRegular";
+}
+.header {
+  position: relative;
+  width: 717px;
+  margin: 0px auto;
+  margin-bottom: 85px;
+}
+body {
+  min-height: 100vh;
+  background: #000;
+}
+.home {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 90px;
+  font-weight: lighter;
+  color: #fefeda;
+  letter-spacing: 5px;
+  text-shadow: 0 0 10px #c18757, 0 0 20px #c18757, 0 0 40px #c18757,
+    0 0 80px #c18757, 0 0 120px #c18757, 0 0 160px #c18757;
+  z-index: 2;
+  font-family: "MexcellentRegular";
+}
+
+.header hr {
+  width: 717px;
+  margin: 0px auto;
+}
+
+.header button {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.forum {
+  font-size: 23px;
+  color: rgb(253, 221, 41);
+}
+
+.login {
+  float: right;
+  font-size: 23px;
+  color: rgb(253, 221, 41);
+}
+
+.logout {
+  float: right;
+  font-size: 23px;
+  color: rgb(253, 221, 41);
+}
+
+.header input {
+  width: 665px;
+  height: 23px;
+  border-radius: 5px;
+  background-color: #2e2e2e;
+  font-family: "LoraRegular";
+  color: white;
+}
+
+.search-button {
+  float: right;
+  font-family: "LoraRegular";
+  font-size: 20px;
+  color: #838383;
+}
+
+main hr {
+  width: 200px;
+  margin: 0px auto;
+  border: 1px dashed white;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 160px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+/* .container header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.container header span {
+  color: rgb(253, 221, 41);
+  font-size: 60px;
+}
+
+.container header button {
+  color: white;
+  background-color: transparent;
+  font-size: 15px;
+  margin-left: 10px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+} */
+
+.slide {
+  position: absolute;
+}
+
+.slide-left {
+  left: -40px;
+  top: 135px;
+  display: none;
+  z-index: 3;
+}
+
+.slide-right {
+  right: -40px;
+  top: 135px;
+  z-index: 3;
+}
+
+.slide button {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+/* .slide div {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  transform: rotate(45deg);
+  border: 5px solid white;
+} */
+
+.slide-left-button {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  transform: rotate(45deg);
+  border: 5px solid white;
+  border-right: 5px solid transparent;
+  border-top: 5px solid transparent;
+}
+
+.slide-right-button {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  transform: rotate(45deg);
+  border: 5px solid white;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
+
+.carousel {
+  width: 1175px;
+  position: relative;
+  /*절대위치의 기준을 잡아줌*/
+  margin: 0 auto;
+}
+
+.movies {
+  margin: 0 auto;
+  width: 1175px;
+}
+
+/* .carousel .movies {
+  overflow: hidden;
+}
+
+.carousel ul {
+  width: 10000px; 
+}
+
+.carousel ul > li {
+  display: inline-block; 
+} */
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.movies li {
+  display: inline-block;
+}
+.movie {
+  width: 180px;
+  height: 400px;
+  position: relative;
+  margin-top: -5px;
+  margin-bottom: -5px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+/* .cover {
+    position: absolute;
+    top: -35px;
+    right: 55px;
+    width: 70px;
+    height: 7px;
+    border-radius: 20%;
+    background: black;
+    box-shadow: 0 0 10px #fafab7, 0 0 20px #fafab7, 0 0 40px #fafab7,
+      0 0 80px #fafab7, 0 0 120px #fafab7, 0 0 160px #fafab7;
+  } */
+.poster {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 180px;
+  height: 256px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.flex-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty {
+  margin-top: 50px;
+  font-size: 60px;
+  color: rgb(253, 221, 41);
+}
+
+.inner_white {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 190px;
+  height: 266px;
+  background-color: transparent;
+  border: 5px solid rgb(138, 61, 10);
+  border-top: 5px solid transparent;
+  z-index: -1;
+  /* box-shadow: 0 5px 10px #fafab7, 0 15px 20px #fafab7, 0 35px 40px #fafab7,
+      0 40px 80px #fafab7; */
+}
+.inner_black {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 190px;
+  height: 266px;
+  background-color: transparent;
+  border: 5px solid rgb(41, 18, 3);
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  z-index: 1;
+}
+.outer_white {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 200px;
+  height: 276px;
+  background-color: transparent;
+  border: 5px solid rgb(138, 61, 10);
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  z-index: -1;
+}
+.outer_black {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 200px;
+  height: 276px;
+  background-color: transparent;
+  border: 5px solid rgb(41, 18, 3);
+  border-top: 5px solid transparent;
+  /* box-shadow: 5px 8px 15px black, -5px 8px 15px black; */
+  z-index: 1;
+}
+/* .light {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    width: 140px;
+    height: 5px;
+    background: linear-gradient(
+      to right,
+      #fafab700,
+      #fafab752,
+      #fafab752,
+      #fafab700
+    );
+  } */
+.bulb {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #fefeda;
+  z-index: 2;
+  /* box-shadow: 0 0 10px #c18757, 0 0 20px #c18757, 0 0 40px #c18757,
+    0 0 80px #c18757, 0 0 120px #c18757, 0 0 160px #c18757; */
+}
+
+.bulb1 {
+  top: -9px;
+  right: -9px;
+}
+
+.bulb2 {
+  top: -9px;
+  right: 10px;
+}
+
+.bulb3 {
+  top: -9px;
+  right: 29px;
+}
+
+.bulb4 {
+  top: -9px;
+  right: 48px;
+}
+
+.bulb5 {
+  top: -9px;
+  right: 67px;
+}
+
+.bulb6 {
+  top: -9px;
+  right: 86px;
+}
+
+.bulb7 {
+  top: -9px;
+  right: 105px;
+}
+
+.bulb8 {
+  top: -9px;
+  right: 124px;
+}
+
+.bulb9 {
+  top: -9px;
+  right: 143px;
+}
+
+.bulb10 {
+  top: -9px;
+  right: 162px;
+}
+
+.bulb11 {
+  top: -9px;
+  right: 181px;
+}
+
+.bulb12 {
+  top: 12px;
+  right: 181px;
+}
+
+.bulb13 {
+  top: 33px;
+  right: 181px;
+}
+
+.bulb14 {
+  top: 54px;
+  right: 181px;
+}
+
+.bulb15 {
+  top: 74px;
+  right: 181px;
+}
+
+.bulb16 {
+  top: 94px;
+  right: 181px;
+}
+
+.bulb17 {
+  top: 114px;
+  right: 181px;
+}
+
+.bulb18 {
+  top: 134px;
+  right: 181px;
+}
+
+.bulb19 {
+  top: 154px;
+  right: 181px;
+}
+
+.bulb20 {
+  top: 174px;
+  right: 181px;
+}
+
+.bulb21 {
+  top: 194px;
+  right: 181px;
+}
+
+.bulb22 {
+  top: 215px;
+  right: 181px;
+}
+
+.bulb23 {
+  top: 236px;
+  right: 181px;
+}
+
+.bulb24 {
+  top: 257px;
+  right: 181px;
+}
+
+.bulb25 {
+  top: 257px;
+  right: 162px;
+}
+
+.bulb26 {
+  top: 257px;
+  right: 143px;
+}
+
+.bulb27 {
+  top: 257px;
+  right: 124px;
+}
+
+.bulb28 {
+  top: 257px;
+  right: 105px;
+}
+
+.bulb29 {
+  top: 257px;
+  right: 86px;
+}
+
+.bulb30 {
+  top: 257px;
+  right: 67px;
+}
+
+.bulb31 {
+  top: 257px;
+  right: 48px;
+}
+
+.bulb32 {
+  top: 257px;
+  right: 29px;
+}
+
+.bulb33 {
+  top: 257px;
+  right: 10px;
+}
+
+.bulb34 {
+  top: 257px;
+  right: -9px;
+}
+
+.bulb35 {
+  top: 236px;
+  right: -9px;
+}
+
+.bulb36 {
+  top: 215px;
+  right: -9px;
+}
+
+.bulb37 {
+  top: 194px;
+  right: -9px;
+}
+
+.bulb38 {
+  top: 174px;
+  right: -9px;
+}
+
+.bulb39 {
+  top: 154px;
+  right: -9px;
+}
+
+.bulb40 {
+  top: 134px;
+  right: -9px;
+}
+
+.bulb41 {
+  top: 114px;
+  right: -9px;
+}
+
+.bulb42 {
+  top: 94px;
+  right: -9px;
+}
+
+.bulb43 {
+  top: 74px;
+  right: -9px;
+}
+
+.bulb44 {
+  top: 54px;
+  right: -9px;
+}
+
+.bulb45 {
+  top: 33px;
+  right: -9px;
+}
+
+.bulb46 {
+  top: 12px;
+  right: -9px;
+}

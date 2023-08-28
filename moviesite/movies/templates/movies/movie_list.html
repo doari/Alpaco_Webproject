@@ -1,5 +1,6 @@
 <!-- C:\Users\PARK EUNJIN\Documents\Alpaco_Webproject\moviesite\movies\templates\movies\movie_list.html -->
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,17 +18,32 @@
         <hr />
         <button class="forum" onclick="location.href='{% url 'post_list' %}'">
           Forum
+          
         </button>
-        <button class="login" onclick="location.href='/bcuser/login/'">
+        <button class="login" id="login-button" onclick="toggleButtonsAndRedirect()">
           Log In
-        </button>
+      </button>
+      <button class="logout" id="logout-button" style="display: none;" onclick="location.href='/bcuser/logout/'">
+          Log Out
+      </button>
+      
+      <script>
+          function toggleButtonsAndRedirect() {
+              const loginButton = document.getElementById('login-button');
+              const logoutButton = document.getElementById('logout-button');
+      
+              loginButton.style.display = 'none';   // Hide the login button
+              logoutButton.style.display = 'block'; // Show the logout button
+      
+              // Redirect to the login page
+              window.location.href = '/bcuser/login/';
+          }
+      </script>
+      
+    
         <hr />
-        <form method="GET">
-          <input
-            type="text"
-            name="search"
-            placeholder="영화 제목을 검색하세요"
-          />
+        <form action="{% url 'search' %}" method="GET">
+          <input type="text" name="q" placeholder="영화 제목을 검색하세요" />
           <button type="submit" class="search-button">검색</button>
         </form>
       </div>
@@ -127,8 +143,9 @@
           </div>
         </div>
       </div>
-
+      
       <hr />
+      
 
       <div class="container">
         <header>

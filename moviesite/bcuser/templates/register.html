@@ -1,40 +1,93 @@
-{% extends "base.html" %}
-{% block contents %}
-<div class="row mt-5">
-  <div class="col-12 text-center">
-    <h1>회원가입</h1>
-  </div>
-</div>
-<div class="row mt-5">
-  <div class="col-12">
-    {{ error }}
-  </div>
-</div>
-<div class="row mt-5">
-  <div class="col-12">
-    <form method="POST" action=".">
-      {% csrf_token %}
-      <div class="form-group">
-        <label for="username">사용자 이름</label>
-        <input type="text" class="form-control" id="username" placeholder="사용자 이름" name="username" />
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
+  </head>
+  <body>
+    <section class="container">
+      <div class="flex-box">
+        <button class="title-button" onclick="location.href='/movies/'">
+          <h1>CINEMA PARADISO</h1>
+        </button>
       </div>
-      <div class="form-group">
-        <label for="useremail">사용자 이메일</label>
-        <input type="email" class="form-control" id="useremail" placeholder="사용자 이메일" name="useremail" />
+
+      <div class="flex-box">
+        <div class="error">
+          <!-- views.py에 register 메소드로 부터 res_data를 통해 error메세지가 매핑됨 -->
+          {{ error }}
+        </div>
       </div>
-      <div class="form-group">
-        <label for="password">비밀번호</label>
-        <input type="password" class="form-control" id="password" placeholder="비밀번호" name="password" />
+
+      <div class="row mt-5">
+        <div class="col-12">
+          <!-- post방식의 현재페이지 -->
+          <!-- {% csrf_token %} : 암호화된 키 인증 : 암호가 맞지 않으면 호청이 되지 않음 -->
+          <form method="POST" action=".">
+            {% csrf_token %}
+            <div class="flex-box">
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="사용자 이름"
+                name="username"
+              />
+            </div>
+            <div class="flex-box">
+              <input
+                type="email"
+                class="form-control"
+                id="useremail"
+                placeholder="사용자 이메일"
+                name="useremail"
+              />
+            </div>
+            <div class="flex-box">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="비밀번호"
+                name="password"
+              />
+            </div>
+            <div class="flex-box">
+              <input
+                type="password"
+                class="form-control"
+                id="re-password"
+                placeholder="비밀번호 확인"
+                name="re-password"
+              />
+            </div>
+            <div class="flex-box">
+              <button
+                type="submit"
+                class="register-button"
+                onclick="location.href='/movies/'"
+              >
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="re-password">비밀번호 확인</label>
-        <input type="password" class="form-control" id="re-password" placeholder="비밀번호 확인" name="re-password" />
+      <hr />
+      <div class="login">
+        <div class="flex-box">
+          <p>계정이 있으신가요?</p>
+        </div>
+
+        <div class="flex-box">
+          <button class="login-button" onclick="location.href='/bcuser/login'">
+            Log In
+          </button>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary" onclick="location.href='/movies/'">등록</button>
-    </form>
-  </div>
-</div>
-<div class="col-12 mt-2">
-    <button type="button" class="btn btn-primary" onclick="location.href='/movies/'">돌아가기</button>
-</div>
-{% endblock %}
+    </section>
+  </body>
+</html>

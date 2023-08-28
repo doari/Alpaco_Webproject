@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block contents %}
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h1>로그인</h1>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <!-- views.py에 register 메소드로 부터 res_data를 통해 error메세지가 매핑됨 -->
+            {{ error }}
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <!-- post방식의 현재페이지 -->
+            <!-- {% csrf_token %} : 암호화된 키 인증 : 암호가 맞지 않으면 호청이 되지 않음 -->
+            <form method="POST" action="."> 
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-group">
+                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                  <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}"
+                    placeholder="{{ field.label }}" name="{{ field.name }}" />
+                </div>
+                {% if field.errors %}
+                <span style="color: red">{{ field.errors }}</span>
+                {% endif %}
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">로그인</button>
+              </form>
+          
+        </div>
+    </div>
+</div>
+    <button type="button" class="btn btn-primary" onclick="location.href='/post/'">돌아가기</button>
+
+{% endblock %}
+

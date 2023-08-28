@@ -1,112 +1,122 @@
-<!-- C:\Users\PARK EUNJIN\Documents\Alpaco_Webproject\moviesite\movies\templates\movies\popular_movie.html -->
+<!-- C:\Users\PARK EUNJIN\Documents\Alpaco_Webproject\moviesite\movies\templates\movies\movie_list.html -->
+{% load static %}
 <!DOCTYPE html>
-<html>
-<head>
-    <title>상영중 영화 리스트</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Rated</title>
 
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
-
-        h1 {
-            margin: 20px 0;
-            padding: 0;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        li {
-            background-color: #fff;
-            margin: 10px;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            flex: 0 0 calc(20% - 20px);
-            box-sizing: border-box;
-        }
-
-        h2 {
-            margin: 0;
-            padding: 0;
-        }
-
-        p {
-            margin: 10px 0;
-            padding: 0;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        /* 검색 버튼 스타일 */
-        .search-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .search-button:hover {
-            background-color: #0056b3;
-        }
-        /* 검색 입력 필드 스타일 */
-        input[type="text"] {
-        padding: 12px;
-        font-size: 18px;
-    }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/top_rated.css' %}" />
+  </head>
+  <body>
     <header>
-        <h1>최고평점 영화</h1>
-        <div class="navbar d-flex justify-content-end flex-wrap">
-    
-            <button class="btn" onclick="location.href='/bcuser/register/'">회원가입</button>
-            <button class="btn" onclick="location.href='/bcuser/login/'">로그인</button>
-            <button class="btn" onclick="location.href='/bcuser/logout/'">로그아웃</button>
-            <button class="btn" onclick="location.href='/movies/'">메인페이지</button>
-            
-        </div>
-        <button class="btn btn-primary ml-2" onclick="location.href='{% url 'post_list' %}'">이용자게시판</button>
-        <form method="GET">
-            <input type="text" name="search" placeholder="영화 제목 검색">
-            <button type="submit" class="search-button">검색</button>
+      <div class="header">
+        <h1>Top Rated</h1>
+        <hr />
+        <button class="home" onclick="location.href='/movies/'">Home</button>
+        <button class="login" id="login-button" onclick="toggleButtonsAndRedirect()">
+          Log In
+      </button>
+      <button class="logout" id="logout-button" style="display: none;" onclick="location.href='/bcuser/logout/'">
+          Log Out
+      </button>
+      
+      <script>
+          function toggleButtonsAndRedirect() {
+              const loginButton = document.getElementById('login-button');
+              const logoutButton = document.getElementById('logout-button');
+      
+              loginButton.style.display = 'none';   // Hide the login button
+              logoutButton.style.display = 'block'; // Show the logout button
+      
+              // Redirect to the login page
+              window.location.href = '/bcuser/login/';
+          }
+      </script>
+      </button>
+        <hr />
+        <form action="{% url 'search' %}" method="GET">
+          <input type="text" name="q" placeholder="영화 제목을 검색하세요" />
+          <button type="submit" class="search-button">검색</button>
         </form>
+      </div>
     </header>
-    <body>
-        <h1>TOP Movies</h1>
+
+    <main>
+      <!-- <div class="container">
+        <div class="carousel" data="0"> -->
+      <div class="movies">
         <ul>
-            {% for movie in top_rated_movies %}
-                <li>
-                    
-                    <a href="{% url 'movie_detail' movie_id=movie.id %}">
-                        <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
-                        <h2>{{ movie.title }}</h2>
-                    </a>
-                    <p>개봉일: {{ movie.release_date }}</p>
-                </li>
-            {% endfor %}
+          {% for movie in top_rated_movies %}
+          <li class="movie">
+            <span class="frame">
+              <span class="inner_white"></span>
+              <span class="inner_black"></span>
+              <span class="outer_white"></span>
+              <span class="outer_black"></span>
+            </span>
+            <span class="bulbs">
+              <span class="bulb bulb1"></span>
+              <span class="bulb bulb2"></span>
+              <span class="bulb bulb3"></span>
+              <span class="bulb bulb4"></span>
+              <span class="bulb bulb5"></span>
+              <span class="bulb bulb6"></span>
+              <span class="bulb bulb7"></span>
+              <span class="bulb bulb8"></span>
+              <span class="bulb bulb9"></span>
+              <span class="bulb bulb10"></span>
+              <span class="bulb bulb11"></span>
+              <span class="bulb bulb12"></span>
+              <span class="bulb bulb13"></span>
+              <span class="bulb bulb14"></span>
+              <span class="bulb bulb15"></span>
+              <span class="bulb bulb16"></span>
+              <span class="bulb bulb17"></span>
+              <span class="bulb bulb18"></span>
+              <span class="bulb bulb19"></span>
+              <span class="bulb bulb20"></span>
+              <span class="bulb bulb21"></span>
+              <span class="bulb bulb22"></span>
+              <span class="bulb bulb23"></span>
+              <span class="bulb bulb24"></span>
+              <span class="bulb bulb25"></span>
+              <span class="bulb bulb26"></span>
+              <span class="bulb bulb27"></span>
+              <span class="bulb bulb28"></span>
+              <span class="bulb bulb29"></span>
+              <span class="bulb bulb30"></span>
+              <span class="bulb bulb31"></span>
+              <span class="bulb bulb32"></span>
+              <span class="bulb bulb33"></span>
+              <span class="bulb bulb34"></span>
+              <span class="bulb bulb35"></span>
+              <span class="bulb bulb36"></span>
+              <span class="bulb bulb37"></span>
+              <span class="bulb bulb38"></span>
+              <span class="bulb bulb39"></span>
+              <span class="bulb bulb40"></span>
+              <span class="bulb bulb41"></span>
+              <span class="bulb bulb42"></span>
+              <span class="bulb bulb43"></span>
+              <span class="bulb bulb44"></span>
+              <span class="bulb bulb45"></span>
+              <span class="bulb bulb46"></span>
+            </span>
+            <a href="{% url 'movie_detail' movie_id=movie.id %}">
+              <img
+                class="poster"
+                src="{{ movie.poster_url }}"
+                alt="{{ movie.title }}"
+              />
+            </a>
+          </li>
+          {% endfor %}
         </ul>
-    </body>
+      </div>
+      <!-- </div>
+      </div> -->
+    </main>
+  </body>
 </html>

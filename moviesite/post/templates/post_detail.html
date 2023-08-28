@@ -1,78 +1,127 @@
-<!-- templates/post_detail.html -->
-{% extends "base.html" %}
 {% load static %}
-{% block contents %}
-<style>
-    div.comment-name {
-        font-size: 1.2em;
-        font-weight: bold;
-        color: #007BFF;
-    }
-
-    .comment p {
-        font-size: 1em;
-        color: #e7872e;
-    }
-
-    .post-body {
-        font-size: 1.2em;
-        font-weight: 800;
-        line-height: 1.7;
-        color: rgb(63, 211, 85);
-    }
-</style>
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-12 text-center">
-            <h2>{{ post.title }}</h2>
-            <p>{{ post.author}}</p>
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-12">
-            {% if post.image %}
-            <img src="{{ post.image.url }}" alt="Post Image" style="max-height: 700px;">
-            
-            <p class="post-body">{{ post.text }}</p>
-            {% endif %}
-        </div>
-    </div>
-    <hr>
-    <div class="row mt-5">
-        <div class="col-12">
-            <h4>&#35; 댓글</h4>
-            <p></p>
-            {% for comment in comments%}
-            <div class="comment">
-                <div class="comment-name">{{comment.name}}</div>
-                <p>{{comment.body}}</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/post_detail.css' %}" />
+    <script
+      type="text/javascript"
+      src="{% static 'js/post_detail.js' %}"
+    ></script>
+  </head>
+  <body>
+    <div class="outer-container">
+      <div class="inner-container">
+        <header>
+          <div class="flex-box">
+            <button
+              type="button"
+              class="button forum-button"
+              onclick="location.href='{% url 'post_list' %}'"
+            >
+              Forum
+            </button>
+          </div>
+          <div class="flex-box">
+            <div class="header-menu">
+              <button
+                class="button home-button"
+                onclick="location.href='/movies/'"
+              >
+                Home
+              </button>
+            </button>
+            <button class="button login-button" id="login-button" onclick="toggleButtonsAndRedirect()">
+              Log In
+          </button>
+          <button class="button logout-button" id="logout-button" style="display: none;" onclick="location.href='/bcuser/logout/'">
+              Log Out
+          </button>
+          
+          <script>
+              function toggleButtonsAndRedirect() {
+                  const loginButton = document.getElementById('login-button');
+                  const logoutButton = document.getElementById('logout-button');
+          
+                  loginButton.style.display = 'none';   // Hide the login button
+                  logoutButton.style.display = 'block'; // Show the logout button
+          
+                  // Redirect to the login page
+                  window.location.href = '/bcuser/login/';
+              }
+          </script>
             </div>
-            {% empty %}
-            <p>No command yet.</p>
-            {% endfor %}
-        </div>
-    </div>
-    <hr>
-    <div class="row mt-5">
-        <div class="col-12">
-            <h3>댓글쓰기</h3>
-            <form method="POST">
-                {% csrf_token %}
-                {{comment_form.as_p}}
-                <button type="submit" class="btn btn-primary">등록</button>
-            </form>
-        </div>
-        <div class="col-12 mt-2">
-            <button type="button" class="btn btn-primary" onclick="location.href='/detail/edit/{{ post.pk }}/'">수정하기</button>
-            <button type="button" class="btn btn-primary" onclick="location.href='/post/'">돌아가기</button>
-        </div>
-    </div>
-</div>
-<hr>
-<div class="row mt-5" style="background-color: rgb(175, 179, 191);">
-    <div class="col-12 text-center">
-        <p>&copy; 2023 moviesite. All rights reserved.Designed by Jun</p>
-    </div>
-</div>
-{% endblock %}
+          </div>
 
+          <div class="flex-box">
+            <div class="post-card">
+              <p class="post-title">{{ post.title }}</p>
+              <p class="post-author">by {{ post.author}}</p>
+            </div>
+          </div>
+        </header>
+        <main>
+          {% if post.image %}
+          <div class="flex-box">
+            <img src="{{ post.image.url }}" alt="Post Image" />
+          </div>
+          {% endif %}
+
+          <div class="flex-box">
+            <p class="post-body">{{ post.text }}</p>
+          </div>
+
+          <div class="flex-box">
+            <button
+              type="button"
+              class="button edit-button"
+              onclick="location.href='/detail/edit/{{ post.pk }}/'"
+            >
+              (수정하기)
+            </button>
+          </div>
+
+          {% for comment in comments%}
+          <hr />
+          <div class="flex-box">
+            <div class="comment">
+              <div class="comment-body">"{{comment.body}}"</div>
+              <div class="comment-name">-{{comment.name}}</div>
+            </div>
+          </div>
+
+          {% empty %}
+          <div class="flex-box">
+            <div class="no-comment">No Comment Yet.</div>
+          </div>
+
+          {% endfor %}
+          <hr />
+          <div class="flex-box">
+            <button class="button comment-open-button" id="comment-open-button">
+              댓글 달기
+            </button>
+          </div>
+
+          <div
+            class="comment-form-outercontainer"
+            id="comment-form-outercontainer"
+          >
+            <form method="POST">
+              {% csrf_token %}
+              <div class="flex-box">
+                <div class="comment-form-container">{{comment_form.as_p}}</div>
+              </div>
+
+              <div class="flex-box">
+                <button type="submit" class="button comment-button">
+                  댓글 등록
+                </button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

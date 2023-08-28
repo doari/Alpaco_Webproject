@@ -1,0 +1,156 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "MexcellentRegular";
+  src: url("../font/mexcellent.regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "ParisienneRegular";
+  src: url("../font/Parisienne-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NotoSerifKRRegular";
+  src: url("../font/NotoSerifKR-Regular.otf") format("opentype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "NotoSerifKRRegular";
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+.outer-container {
+  width: 830px;
+  margin: 10px auto;
+  border: 2px solid black;
+  padding: 3px;
+}
+
+.inner-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  padding: 5px;
+  padding-bottom: 30px;
+}
+
+.flex-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forum {
+  font-size: 73px;
+  font-family: "ParisienneRegular";
+  font-weight: 500;
+}
+
+header {
+  margin-bottom: 20px;
+}
+/* .header-button {
+  width: 300px;
+  margin: 0 auto;
+} */
+
+.button {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  /* font-size: 27px; */
+  /* font-family: "ParisienneRegular"; */
+  /* color: rgb(211, 179, 0); */
+}
+
+.home-button {
+  font-family: "ParisienneRegular";
+  font-size: 23px;
+}
+
+.login-button {
+  font-family: "ParisienneRegular";
+  font-size: 23px;
+  float: right;
+}
+
+.logout-button {
+  font-family: "ParisienneRegular";
+  font-size: 23px;
+  float: right;
+}
+
+.write-button {
+  margin: 57px;
+  font-size: 27px;
+}
+
+.header-menu {
+  width: 450px;
+  border: 1px solid black;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+}
+
+hr {
+  width: 515px;
+  margin: 26px auto;
+  border: 1px solid rgba(0, 0, 0, 0.151);
+}
+
+.post-card {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+img {
+  width: 72px;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.card-body {
+  display: inline-block;
+  width: 428px;
+}
+
+.empty {
+  font-family: "ParisienneRegular";
+  font-size: 40px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration-line: underline;
+}
+
+/* .card-title {
+  font-size: 18px;
+  font-weight: 600;
+} */
+
+.card-text {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.685);
+}
+
+.author {
+  font-size: 12px;
+}

@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "MexcellentRegular";
+  src: url("../font/mexcellent.regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "ParisienneRegular";
+  src: url("../font/Parisienne-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NotoSerifKRRegular";
+  src: url("../font/NotoSerifKR-Regular.otf") format("opentype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "NotoSerifKRRegular";
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+.outer-container {
+  width: 550px;
+  margin: 100px auto;
+  border: 2px solid black;
+  padding: 3px;
+}
+
+.inner-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  padding: 5px;
+  padding-bottom: 30px;
+}
+
+.flex-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 37px;
+  margin: 5px;
+  margin-bottom: 35px;
+}
+
+.save-button {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 20px;
+}
+
+.save-button:hover {
+  text-decoration: underline;
+}
+
+.forum-button {
+  font-size: 18px;
+}
+
+.forum-button:hover {
+  text-decoration: underline;
+}

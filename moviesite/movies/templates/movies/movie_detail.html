@@ -1,82 +1,143 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>{{ movie.title }}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        h1 {
-            margin-top: 0;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        p {
-            margin-bottom: 20px;
-        }
-        form {
-            margin-top: 20px;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-primary {
-            background-color: #007bff;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>{{ movie.title }}</h1>
-        <button class="btn btn-primary ml-2" onclick="location.href='{% url 'post_list' %}'">자유게시판</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='/movies/'">메인페이지</button>
-    </header>
+    <link rel="stylesheet" href="{% static 'css/movie_detail.css' %}" />
+  </head>
+  <body>
+    <div class="outer-container">
+        <div class="inner-container">
+            <header>
+                <div class="flex-box">
+                    <button type="button" class="button home-button" onclick="location.href='/movies/'">
+                        Cinema Paradiso
+                    </button>
+                </div>
+                <div class="flex-box header-menu">
+                    <div class="menu-buttons">
+                        <button class="button forum-button" onclick="location.href='{% url 'post_list' %}'">
+                            Forum
+                        </button>
+                    </div>
+                    <div class="menu-buttons">
+                        {% if user.is_authenticated %}
+                        <button class="button logout-button" onclick="location.href='/bcuser/logout/'">
+                            Log Out
+                        </button>
+                        {% else %}
+                        <button class="button login-button" onclick="location.href='/bcuser/login/'">
+                            Log In
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+                <br/>
+            </header>
+            <main>
+                <div class="flex-box">
+                    <img src="{{ movie.poster_url }}" alt="{{ movie.title }}" />
+                </div><br/>
+                <div class="flex-box">
+                    <h2>{{ movie.title }}</h2>
+                </div>
+                <div class="flex-box movie-details">
+                    <div class="release-date-container">
+                        <p class="release-date">개봉일: {{ movie.release_date }}</p>
+                    </div>
+                    <div class="overview-container"><h2>영화소개 </h2>
+                        <p class="overview"><br/>  {{ movie.overview }}</p>
+                    </div>
+                    <br/>
+                </div>
+                <h2>영화이미지</h2>
+                <br/>
+                <!-- 이미지 슬라이더 -->
+                <div class="slider-container">
+                    {% for image in images %}
+                    <div class="slider-item">
+                        <img src="https://image.tmdb.org/t/p/w500{{ image.file_path }}" alt="Movie Image">
+                    </div>
+                    {% endfor %}
+                </div><br/>
+                <!-- 무비 디테일 페이지 내부 -->
+                <!-- 비디오 목록 슬라이더 -->
+                <h2>영화 영상</h2><br/>
+                <div class="slider-container">
+                    {% for video in videos %}
+                    <div class="video-card">
+                        {{ video.name }}
+                        <iframe src="https://www.youtube.com/embed/{{ video.key }}" allowfullscreen></iframe>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                
+                {% for review in reviews %}
+                <div class="review-card">
+                    <div class="card-content">
+                        <h2 class="card-title">전문가 리뷰 - {{ review.author }}</h2>
+                        <hr class="divider">
+                        <p class="card-text">{{ review.content }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </main>
+        </div>
+    </div>
+
     <main>
-            <h2>{{ api_info.api_name }}</h2>
-            <ul>
-                    <li>
-                            <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
-                            <h2>{{ movie.title }}</h2>
-                        </a>
-                        <p>개봉일: {{ movie.release_date }}</p>
-                        <p>{{ movie.overview }}</p>
-                    </li>
-            </ul>
-    </main> 
-    <!-- <main>
-        <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
-        <p>{{ movie.overview }}</p><hr>
-        <p>개봉일: {{ movie.release_date }}</p><hr>
-         Comment Form
-        <div class="col-12">
+        <!-- 댓글 작성 버튼
+        <div class="flex-box">
+            <button class="button comment-open-button" id="comment-open-button">
+                댓글 달기
+            </button>
+        </div> -->
+        <!-- <form method="POST">
+            {% csrf_token %}
+            <div class="flex-box">
+                <div class="comment-form-container">{{ comment_form.as_p }}</div>
+            </div>
+            <div class="flex-box">
+                <button type="submit" name="action" value="save_temp" class="button comment-button">
+                    저장
+                </button>
+                <button type="submit" name="action" value="save_final" class="button comment-button">
+                    댓글 등록
+                </button>
+            </div>
+        </form> -->
+        
+        <!-- 댓글 작성 폼 -->
+        <!-- <div class="comment-form-outercontainer" id="comment-form-outercontainer">
             <h3>댓글쓰기</h3><br>
-            <form method="POST">
+            <form method="post">
                 {% csrf_token %}
-                {{comment_form.as_p}}
-                <button type="submit" class="btn btn-primary">등록</button>
+                <div class="flex-box">
+                    <div class="comment-form-container">{{ comment_form.as_p }}</div>
+                </div>
+                <div class="flex-box">
+                    <button type="submit" class="button comment-button">
+                        댓글 등록
+                    </button>
+                </div>
             </form>
-        </div> 
-    </main> -->
+        </div> -->
+        <!-- 댓글 목록
+        {% for comment in comments %}
+        <hr />
+        <div class="flex-box">
+            <div class="comment">
+                <div class="comment-body">{{ comment.body }}</div>
+                <div class="comment-name">-{{ comment.name }}</div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="flex-box">
+            <div class="no-comment">No Comment Yet.</div>
+        </div>
+        {% endfor %}
+        <hr /> -->
+    </main>
 </body>
 </html>
-
-

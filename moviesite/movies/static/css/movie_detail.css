@@ -1,0 +1,252 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "MexcellentRegular";
+  src: url("../font/mexcellent.regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "ParisienneRegular";
+  src: url("../font/Parisienne-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NotoSerifKRRegular";
+  src: url("../font/NotoSerifKR-Regular.otf") format("opentype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "NotoSerifKRRegular";
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+.outer-container {
+  width: 830px;
+  margin: 10px auto;
+  border: 2px solid black;
+  padding: 3px;
+}
+
+.inner-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  padding: 5px;
+  padding-bottom: 10px;
+}
+
+.flex-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin-top: 15px;
+  font-size: 47px;
+}
+.header-menu {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .menu-buttons {
+    margin: 0 10px;
+  }
+header {
+  margin-bottom: 20px;
+}
+/* .header-button {
+  width: 300px;
+  margin: 0 auto;
+} */
+
+.button {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  /* font-size: 27px; */
+  /* font-family: "ParisienneRegular"; */
+  /* color: rgb(211, 179, 0); */
+}
+
+.forum-button {
+  font-family: "ParisienneRegular";
+  font-size: 23px;
+}
+
+.home-button {
+  font-family: "ParisienneRegular";
+  font-size: 51px;
+}
+
+.login-button {
+  font-family: "ParisienneRegular";
+  font-size: 23px;
+  float: right;
+}
+
+.logout-button {
+  font-family: "ParisienneRegular";
+  font-size: 23px;
+  float: right;
+}
+
+span {
+  font-size: 27px;
+  font-family: "ParisienneRegular";
+  margin: 5px;
+}
+.header-menu {
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
+  border: 1px solid black;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  margin: 0 auto; /* 가운데 정렬 */
+
+}
+
+.menu-buttons {
+  margin: 0 10px;
+}
+
+hr {
+  width: 200px;
+  margin: 0px auto;
+  border: 1px solid black;
+}
+
+img {
+  border-radius: 8px;
+  width: 500px;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 20px;
+}
+.review-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.review-card:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.divider {
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #666;
+}
+ /* 추가한 슬라이더 스타일 */
+ .slider-container {
+  display: flex;
+  overflow-x: auto; /* 스크롤바가 필요할 때만 표시 */
+  scroll-snap-type: x mandatory;
+  gap: 10px; /* 이미지 사이의 간격 */
+  padding: 10px 0; /* 위아래 패딩을 추가하여 더 보기 좋게 만듦 */
+  border-radius: 8px; /* 슬라이더 박스에도 깍아주기 */
+  background-color: #f5f5f5; /* 배경색 추가 */
+}
+.slider-item {
+  flex: 0 0 auto; /* 이미지 원본 크기 유지 */
+  scroll-snap-align: start;
+  border-radius: 8px; /* 이미지 깍아주는 부분 */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+}
+.slider-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* 이미지 깍아주는 부분 */
+}
+/* 슬라이더 컨테이너 스타일 */
+.slider-container {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    padding: 10px 0;
+}
+
+/* 비디오 카드 스타일 */
+.video-card {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 0 10px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+}
+
+.video-card h4 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.video-card iframe {
+    border-radius: 8px;
+    width: 100%;
+    height: 500px;
+    border: none;
+}
+/* 추가한 스타일 */
+.movie-details {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* 열 방향으로 정렬 */
+  align-items: center; /* 가운데 정렬 */
+}
+
+.release-date-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.release-date {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.overview-container {
+  background-color: #f7f7f7; /* 배경 색상 설정 */
+  padding: 20px; /* 패딩 설정 */
+  border-radius: 8px; /* 테두리 모서리를 둥글게 만듦 */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+}
+
+.overview {
+  font-size: 16px; /* 폰트 크기 설정 */
+  line-height: 1.5; /* 줄 간격 설정 */
+}

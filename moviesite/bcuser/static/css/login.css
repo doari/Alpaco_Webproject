@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "MexcellentRegular";
+  src: url("../font/mexcellent.regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "ParisienneRegular";
+  src: url("../font/Parisienne-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NotoSerifKRRegular";
+  src: url("../font/NotoSerifKR-Regular.otf") format("opentype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "ParisienneRegular";
+}
+
+body {
+  min-height: 100vh;
+  background: #000;
+}
+
+.container {
+  width: 550px;
+  margin: 0 auto;
+  margin-top: 150px;
+}
+
+.flex-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+h1 {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 65px;
+  font-weight: lighter;
+  color: #fefeda;
+  letter-spacing: 5px;
+  text-shadow: 0 0 10px #c18757, 0 0 20px #c18757, 0 0 40px #c18757,
+    0 0 80px #c18757, 0 0 120px #c18757, 0 0 160px #c18757;
+  z-index: 2;
+  font-family: "MexcellentRegular";
+  margin-bottom: 55px;
+}
+
+.form-control {
+  width: 280px;
+  height: 30px;
+  border: 1px solid #c0c0c0;
+  background: #c0c0c020;
+  border-radius: 3px;
+  margin: 10px;
+  color: white;
+  font-family: "NotoSerifKRRegular";
+}
+
+.login-button {
+  color: rgb(253, 221, 41);
+  font-size: 48px;
+  margin-top: 27px;
+}
+
+hr {
+  width: 75px;
+  margin: 40px auto;
+  border: 1px dashed white;
+  margin-bottom: 53px;
+}
+
+.register-button {
+  color: white;
+  font-size: 33px;
+  margin: 5px;
+}
+
+p {
+  color: white;
+  font-size: 14px;
+}

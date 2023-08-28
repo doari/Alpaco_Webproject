@@ -1,0 +1,118 @@
+<!-- C:\Users\PARK EUNJIN\Documents\Alpaco_Webproject\moviesite\movies\templates\movies\movie_list.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+
+    <link rel="stylesheet" href="{% static 'css/search.css' %}" />
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <button class="home" onclick="location.href='/movies/'">
+          CINEMA PARADISO
+        </button>
+        <hr />
+        <button class="forum" onclick="location.href='{% url 'post_list' %}'">
+          Forum
+        </button>
+        <button class="login" onclick="location.href='/bcuser/login/'">
+          Log In
+        </button>
+        <button class="logout" onclick="location.href='/bcuser/logout/'">
+          Log Out
+        </button>
+        <hr />
+        <form action="{% url 'search' %}" method="GET">
+          <input type="text" name="q" placeholder="영화 제목을 검색하세요" />
+          <button type="submit" class="search-button">검색</button>
+        </form>
+      </div>
+    </header>
+
+    <main>
+      <!-- <div class="container">
+        <div class="carousel" data="0"> -->
+      <div class="movies">
+        <ul>
+          {% for movie in movies %} {% if movie.api_id != -1 %}
+          <li class="movie">
+            <span class="frame">
+              <span class="inner_white"></span>
+              <span class="inner_black"></span>
+              <span class="outer_white"></span>
+              <span class="outer_black"></span>
+            </span>
+            <span class="bulbs">
+              <span class="bulb bulb1"></span>
+              <span class="bulb bulb2"></span>
+              <span class="bulb bulb3"></span>
+              <span class="bulb bulb4"></span>
+              <span class="bulb bulb5"></span>
+              <span class="bulb bulb6"></span>
+              <span class="bulb bulb7"></span>
+              <span class="bulb bulb8"></span>
+              <span class="bulb bulb9"></span>
+              <span class="bulb bulb10"></span>
+              <span class="bulb bulb11"></span>
+              <span class="bulb bulb12"></span>
+              <span class="bulb bulb13"></span>
+              <span class="bulb bulb14"></span>
+              <span class="bulb bulb15"></span>
+              <span class="bulb bulb16"></span>
+              <span class="bulb bulb17"></span>
+              <span class="bulb bulb18"></span>
+              <span class="bulb bulb19"></span>
+              <span class="bulb bulb20"></span>
+              <span class="bulb bulb21"></span>
+              <span class="bulb bulb22"></span>
+              <span class="bulb bulb23"></span>
+              <span class="bulb bulb24"></span>
+              <span class="bulb bulb25"></span>
+              <span class="bulb bulb26"></span>
+              <span class="bulb bulb27"></span>
+              <span class="bulb bulb28"></span>
+              <span class="bulb bulb29"></span>
+              <span class="bulb bulb30"></span>
+              <span class="bulb bulb31"></span>
+              <span class="bulb bulb32"></span>
+              <span class="bulb bulb33"></span>
+              <span class="bulb bulb34"></span>
+              <span class="bulb bulb35"></span>
+              <span class="bulb bulb36"></span>
+              <span class="bulb bulb37"></span>
+              <span class="bulb bulb38"></span>
+              <span class="bulb bulb39"></span>
+              <span class="bulb bulb40"></span>
+              <span class="bulb bulb41"></span>
+              <span class="bulb bulb42"></span>
+              <span class="bulb bulb43"></span>
+              <span class="bulb bulb44"></span>
+              <span class="bulb bulb45"></span>
+              <span class="bulb bulb46"></span>
+            </span>
+            <a href="{% url 'movie_detail' movie_id=movie.api_id %}">
+              <img
+                class="poster"
+                src="{{ movie.poster_url }}"
+                alt="{{ movie.title }}"
+              />
+            </a>
+          </li>
+          {% endif %} {% empty %}
+          <div class="flex-box">
+            <div class="empty">
+              <p>No Results Found</p>
+            </div>
+          </div>
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- </div>
+      </div> -->
+    </main>
+  </body>
+</html>

@@ -17,4 +17,6 @@ urlpatterns = [
     path('upcoming/', views.Upcoming_MovieView.as_view(), name='upcoming-movies'),  
     # 영화 세부 정보 페이지
     path('movie/<int:movie_id>/', views.movie_detail, name='movie_detail'),
+    path('movie/<int:movie_id>/comment/', views.add_comment_to_movie, name='add_comment_to_movie'),
+    path('search/', views.search, name='search'),
 ]

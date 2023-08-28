@@ -62,6 +62,12 @@ h1 {
   color: rgb(253, 221, 41);
 }
 
+.logout {
+  float: right;
+  font-size: 23px;
+  color: rgb(253, 221, 41);
+}
+
 .header input {
   width: 665px;
   height: 23px;
@@ -79,9 +85,9 @@ h1 {
 }
 
 main hr {
-  width: 200px;
+  width: 1135px;
   margin: 0px auto;
-  border: 1px dashed white;
+  border: 1px solid rgba(255, 255, 255, 0.205);
 }
 
 .container {
