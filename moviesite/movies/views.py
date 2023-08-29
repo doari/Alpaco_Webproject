@@ -151,22 +151,6 @@ def movie_detail(request, movie_id):
 
 
 
-    
-# def movie_detail(request, movie_id):
-#     movie = get_object_or_404(Movie, id=movie_id)
-
-#     if request.method == 'POST':
-#         comment_form = CommentForm(request.POST)
-#         if comment_form.is_valid():
-#             new_comment = comment_form.save(commit=False)
-#             new_comment.movie = movie
-#             new_comment.save()
-#             return redirect('movie_detail', movie_id=movie_id)
-#     else:
-#         comment_form = CommentForm()
-
-#     return render(request, 'movies/movie_detail.html', {'movie': movie, 'comment_form': comment_form})
-
 class PopularMovieView(TemplateView):
     template_name = 'movies/popular_movie.html'  # 템플릿 파일의 경로
     def get_context_data(self, **kwargs):

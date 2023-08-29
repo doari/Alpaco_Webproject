@@ -86,58 +86,6 @@
         </div>
     </div>
 
-    <main>
-        <!-- 댓글 작성 버튼
-        <div class="flex-box">
-            <button class="button comment-open-button" id="comment-open-button">
-                댓글 달기
-            </button>
-        </div> -->
-        <!-- <form method="POST">
-            {% csrf_token %}
-            <div class="flex-box">
-                <div class="comment-form-container">{{ comment_form.as_p }}</div>
-            </div>
-            <div class="flex-box">
-                <button type="submit" name="action" value="save_temp" class="button comment-button">
-                    저장
-                </button>
-                <button type="submit" name="action" value="save_final" class="button comment-button">
-                    댓글 등록
-                </button>
-            </div>
-        </form> -->
         
-        <!-- 댓글 작성 폼 -->
-        <!-- <div class="comment-form-outercontainer" id="comment-form-outercontainer">
-            <h3>댓글쓰기</h3><br>
-            <form method="post">
-                {% csrf_token %}
-                <div class="flex-box">
-                    <div class="comment-form-container">{{ comment_form.as_p }}</div>
-                </div>
-                <div class="flex-box">
-                    <button type="submit" class="button comment-button">
-                        댓글 등록
-                    </button>
-                </div>
-            </form>
-        </div> -->
-        <!-- 댓글 목록
-        {% for comment in comments %}
-        <hr />
-        <div class="flex-box">
-            <div class="comment">
-                <div class="comment-body">{{ comment.body }}</div>
-                <div class="comment-name">-{{ comment.name }}</div>
-            </div>
-        </div>
-        {% empty %}
-        <div class="flex-box">
-            <div class="no-comment">No Comment Yet.</div>
-        </div>
-        {% endfor %}
-        <hr /> -->
-    </main>
 </body>
 </html>

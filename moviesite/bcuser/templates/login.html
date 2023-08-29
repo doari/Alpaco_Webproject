@@ -24,8 +24,7 @@
 
       <div class="row mt-5">
         <div class="col-12">
-          <!-- post방식의 현재페이지 -->
-          <!-- {% csrf_token %} : 암호화된 키 인증 : 암호가 맞지 않으면 호청이 되지 않음 -->
+          
           <form method="POST" action=".">
             {% csrf_token %} {% for field in form %}
             <div class="form-group">
